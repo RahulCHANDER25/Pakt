@@ -1,14 +1,43 @@
-[gd_scene format=3 uid="uid://ulgymqnbf4sd"]
+[gd_scene load_steps=2 format=3 uid="uid://ulgymqnbf4sd"]
 
-[node name="Control" type="Control"]
+[ext_resource type="Script" path="res://menu.gd" id="1_1n1tb"]
+
+[node name="Menu" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchor_left = 0.071
+anchor_top = 0.022
+anchor_right = 1.071
 anchor_bottom = 1.0
+offset_left = -258.92
+offset_top = -64.04
+offset_right = -221.92
+offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1n1tb")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 439.0
+offset_top = 384.0
+offset_right = 528.0
+offset_bottom = 485.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play game"
+
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Quit game" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit game"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit game" to="." method="_on_quit_game_pressed"]
