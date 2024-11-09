@@ -10,5 +10,9 @@ func _on_toggled(toggled_on: bool) -> void:
 		
 
 
-func _on_rich_text_label_draw() -> void:
-	pass # Replace with function body.
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://mainMenu.tscn")
+
+
+func _on_h_slider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(0, linear_to_db(value))

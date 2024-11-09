@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://blsmwhw7ccn40"]
+[gd_scene load_steps=5 format=3 uid="uid://blsmwhw7ccn40"]
 
 [ext_resource type="Script" path="res://check_button.gd" id="1_bnp8c"]
+[ext_resource type="AudioStream" uid="uid://ckn3kjp10sopm" path="res://Adventure2.wav" id="2_4k1vn"]
+[ext_resource type="Texture2D" uid="uid://d2jtm5yno6u6x" path="res://sound.png" id="2_palht"]
+[ext_resource type="Script" path="res://audio_stream_player_2d.gd" id="3_u8ayq"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -12,23 +15,66 @@ grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 219.0
+offset_left = 181.0
 offset_top = 353.0
-offset_right = 263.0
-offset_bottom = 393.0
+offset_right = 355.0
+offset_bottom = 446.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Return to main menu"
 
 [node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 script = ExtResource("1_bnp8c")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 0.75
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/HSlider"]
+position = Vector2(200.25, 10)
+scale = Vector2(0.181945, 0.233333)
+texture = ExtResource("2_palht")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.308
+anchor_bottom = 0.267
+offset_left = 187.0
+offset_top = 398.0
+offset_right = 168.84
+offset_bottom = 235.06
+theme_override_font_sizes/font_size = 12
+text = "Switch to fullscreen"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_4k1vn")
+autoplay = true
+bus = &"Music"
+script = ExtResource("3_u8ayq")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.308
+anchor_bottom = 0.267
+offset_left = 155.0
+offset_top = 196.0
+offset_right = 245.84
+offset_bottom = 67.06
+theme_override_colors/font_shadow_color = Color(0.412152, 0.412152, 0.412152, 1)
+theme_override_font_sizes/font_size = 65
+text = "Settings"
 
 [connection signal="draw" from="MarginContainer/VBoxContainer" to="MarginContainer/VBoxContainer/CheckButton" method="_on_v_box_container_draw"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="MarginContainer/VBoxContainer/CheckButton" method="_on_button_pressed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/CheckButton" to="MarginContainer/VBoxContainer/CheckButton" method="_on_toggled"]
-[connection signal="draw" from="RichTextLabel" to="MarginContainer/VBoxContainer/CheckButton" method="_on_rich_text_label_draw"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HSlider" to="MarginContainer/VBoxContainer/CheckButton" method="_on_h_slider_value_changed"]

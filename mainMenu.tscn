@@ -1,6 +1,96 @@
-[gd_scene load_steps=2 format=3 uid="uid://ulgymqnbf4sd"]
+[gd_scene load_steps=21 format=3 uid="uid://ulgymqnbf4sd"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_1n1tb"]
+[ext_resource type="Texture2D" uid="uid://duifytj2mxaop" path="res://IDLE.png" id="2_dv2no"]
+[ext_resource type="Texture2D" uid="uid://bs4sahexh77td" path="res://medium.png" id="2_v33lm"]
+[ext_resource type="Script" path="res://animated_sprite_2d.gd" id="3_4e4mq"]
+[ext_resource type="FontFile" uid="uid://bkddummnta1v5" path="res://scarow-scarow-regular-400.ttf" id="4_kbl27"]
+[ext_resource type="AudioStream" uid="uid://ckn3kjp10sopm" path="res://Adventure2.wav" id="5_73kum"]
+[ext_resource type="Texture2D" uid="uid://dx5d46cdn2ay2" path="res://Idle.png" id="5_wmrta"]
+[ext_resource type="Script" path="res://audio_stream_player_2d.gd" id="6_yap6l"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bkilr"]
+texture = ExtResource("2_v33lm")
+modulate_color = Color(0.385493, 0.385492, 0.385492, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v04s5"]
+atlas = ExtResource("2_dv2no")
+region = Rect2(0, 0, 79, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puywb"]
+atlas = ExtResource("2_dv2no")
+region = Rect2(79, 0, 79, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gc0tl"]
+atlas = ExtResource("2_dv2no")
+region = Rect2(158, 0, 79, 69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0dyj"]
+atlas = ExtResource("2_dv2no")
+region = Rect2(237, 0, 79, 69)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8olog"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v04s5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puywb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gc0tl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0dyj")
+}],
+"loop": true,
+"name": &"demon idle",
+"speed": 4.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7h7yh"]
+atlas = ExtResource("5_wmrta")
+region = Rect2(262, 0, 192, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_613ue"]
+atlas = ExtResource("5_wmrta")
+region = Rect2(494, 0, 192, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24qv8"]
+atlas = ExtResource("5_wmrta")
+region = Rect2(726, 0, 192, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5kf7"]
+atlas = ExtResource("5_wmrta")
+region = Rect2(958, 0, 192, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mk2ae"]
+atlas = ExtResource("5_wmrta")
+region = Rect2(1190, 0, 192, 190)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ha3m6"]
+animations = [{
+"frames": [{
+"duration": 1.3,
+"texture": SubResource("AtlasTexture_7h7yh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_613ue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24qv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5kf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mk2ae")
+}],
+"loop": true,
+"name": &"idle man",
+"speed": 4.0
+}]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -16,6 +106,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1n1tb")
 
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 48.0
+offset_right = 783.0
+offset_bottom = 864.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 61.0
+offset_right = 738.0
+offset_bottom = 861.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_bkilr")
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_left = 439.0
@@ -25,18 +130,70 @@ offset_bottom = 485.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 11
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_pressed_color = Color(0.529412, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0.768627, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0.643137, 0, 0, 1)
+theme_override_constants/outline_size = 2
 text = "Play game"
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_pressed_color = Color(0.529412, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0.768627, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0.643137, 0, 0, 1)
+theme_override_constants/outline_size = 2
 text = "Options"
 
 [node name="Quit game" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_pressed_color = Color(0.529412, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0.768627, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0.643137, 0, 0, 1)
+theme_override_constants/outline_size = 2
 text = "Quit game"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer"]
+position = Vector2(169, -44)
+sprite_frames = SubResource("SpriteFrames_8olog")
+animation = &"demon idle"
+frame_progress = 0.0694876
+script = ExtResource("3_4e4mq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/AnimatedSprite2D"]
+position = Vector2(-223.5, -1.5)
+scale = Vector2(0.869792, 0.889474)
+sprite_frames = SubResource("SpriteFrames_ha3m6")
+animation = &"idle man"
+frame_progress = 0.0737495
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.308
+anchor_bottom = 0.267
+offset_left = 420.0
+offset_top = 298.0
+offset_right = 384.444
+offset_bottom = 128.919
+theme_override_colors/font_color = Color(0.459676, 0.0457134, 0.248339, 1)
+theme_override_colors/font_shadow_color = Color(0.0862745, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.95158, 0.95158, 0.95158, 1)
+theme_override_fonts/font = ExtResource("4_kbl27")
+theme_override_font_sizes/font_size = 48
+text = "Pakt"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_73kum")
+autoplay = true
+bus = &"Music"
+script = ExtResource("6_yap6l")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
