@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnvmde5d45qof"]
+[gd_scene load_steps=6 format=3 uid="uid://bnvmde5d45qof"]
 
 [ext_resource type="Script" path="res://scripts/game_scene.gd" id="1_awa5f"]
 [ext_resource type="Texture2D" uid="uid://bbbswot07mpvi" path="res://assets/Sprites/kirby.png" id="2_c0nnr"]
 [ext_resource type="Script" path="res://scripts/draggingCard.gd" id="3_d7rwe"]
+[ext_resource type="PackedScene" uid="uid://bwjbqo8cayg6y" path="res://scenes/hud.tscn" id="4_1ob6f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttswh"]
 size = Vector2(357.943, 316.056)
@@ -22,3 +23,5 @@ position = Vector2(-2.05713, -1.96307)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
 position = Vector2(0, -3.92613)
 shape = SubResource("RectangleShape2D_ttswh")
+
+[node name="HUD" parent="." instance=ExtResource("4_1ob6f")]
