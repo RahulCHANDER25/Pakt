@@ -108,10 +108,10 @@ script = ExtResource("1_8xtab")
 
 [node name="Panel2" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 169.0
-offset_top = 48.0
-offset_right = 783.0
-offset_bottom = 864.0
+offset_left = 182.0
+offset_top = 45.0
+offset_right = 796.0
+offset_bottom = 861.0
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
