@@ -40,6 +40,7 @@ func spawn_ennemy_card(card_info):
 	card.position = Vector2(get_window().size.x / 2, get_window().size.y / 2)
 	card.connect("refuse", _on_card_refuse)
 	card.connect("pakt", _on_card_pakt)
+	active_card = card_info
 	add_child(card)
 
 func updateStats(effects: Array):
@@ -58,14 +59,13 @@ func updateStats(effects: Array):
 					refresh($HUD/GUI/GameIcons/StrengthCounter/Number, "strength", mapStats["strength"] + effect["strength"])
 
 
-
 func _on_card_pakt():
 	if cards.size() > 0:
 		var card_to_remove_index = -1
-		#for i in range(cards.size()):
-			#if cards[i].description == active_card.description:
-				#card_to_remove_index = i
-				#break
+		for i in range(cards.size()):
+			if cards[i].title == active_card.title:
+				card_to_remove_index = i
+				break
 		
 		if card_to_remove_index != -1:
 			cards.pop_at(card_to_remove_index)
@@ -76,14 +76,15 @@ func _on_card_pakt():
 		print("No more cards to spawn")
 
 func _on_card_refuse():
-	if cards.size() > 1:
+	if cards.size() > 0:
 		var card_to_remove_index = -1
-		#for i in range(cards.size()):
-			#if cards[i].description == active_card.description:
-				#card_to_remove_index = i
-				#break
+		for i in range(cards.size()):
+			if cards[i].title == active_card.title:
+				card_to_remove_index = i
+				break
 			
 		if card_to_remove_index != -1:
+			print("lol")
 			cards.pop_at(card_to_remove_index)
 			updateStats(active_card.pass_effects)
 	if cards.size() > 0:
