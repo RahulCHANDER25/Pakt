@@ -23,8 +23,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if dragging:
-		position = get_global_mouse_position()
-		var drag_distance = position.x - drag_start_position.x
+		var mouse_position = get_global_mouse_position()
+		position = mouse_position
+		var drag_distance = mouse_position.x - drag_start_position.x
 		var drag_percentage = clamp(abs(drag_distance / drag_threshold), 0, 1)
 		print(drag_percentage)
 		var rotation_amount = max_rotation * drag_percentage * sign(drag_distance)
@@ -40,14 +41,6 @@ func setup_card(card_info) -> void:
 func _on_drag_delay_timeout():
 	can_drag = true
 
-#func _setup_area2d():
-	#var area = get_node_or_null("Area2D")
-	#if area:
-		#area.input_event.connect(_on_input_event)
-	#else:
-		##if Area not loaded yet
-		#pass
-	
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:

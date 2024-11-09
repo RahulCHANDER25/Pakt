@@ -10,20 +10,25 @@ size = Vector2(520, 824)
 script = ExtResource("1_qngan")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 520.0
-offset_bottom = 824.0
+offset_left = -264.0
+offset_top = -416.0
+offset_right = 256.0
+offset_bottom = 408.0
+size_flags_horizontal = 4
 color = Color(0.122252, 0.122252, 0.122252, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
-offset_top = 128.0
-offset_right = 100.0
-offset_bottom = 228.0
+offset_left = -264.0
+offset_top = -288.0
+offset_right = -164.0
+offset_bottom = -188.0
 scale = Vector2(5.19, 5.19)
+size_flags_horizontal = 4
 texture = ExtResource("1_h6n2a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(260, 412)
+position = Vector2(-4, -4)
 shape = SubResource("RectangleShape2D_exyd1")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

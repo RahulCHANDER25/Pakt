@@ -2,8 +2,7 @@ extends Node
 
 @export var card_scene: PackedScene
 
-const DraggableCard = preload("res://scripts/draggingCard.gd")
-const Card = preload("res://ressources/Card.gd")
+const Card = preload("res://ressources/CardClass.gd")
 
 var cards = [
 	Card.new ("Mage Stone", "Hello, I'm a stone mage. Do you want pakt with me ?", [{"health": 0}, {"mana": 0}], preload("res://assets/Sprites/divinity/1.png")),
@@ -25,30 +24,10 @@ func spawn_ennemy_card(card_info):
 	
 	card.setup_card(card_info)
 	card.position = Vector2(get_window().size.x / 2, get_window().size.y / 2)
-	#card. shape.extents = new_card_sprite.texture.get_size() / 2
-	#collision_shape.shape = shape
 	card.connect("disappeared", Callable(self, "_on_card_disappeared"))
 	add_child(card)
-	
-	#var new_card_instance = Card.new(card.name, card.description, card.positive_effect, card.negative_effect, card.texture)
-	#var new_card_sprite = Sprite2D.new()
-	#new_card_sprite.texture = new_card_instance.texture
-	#
-	#new_card_sprite.set_script(DraggableCard)
-#
-	#var area = Area2D.new()
-	#area.name = "Area2D"
-	#var collision_shape = CollisionShape2D.new()
-	#var shape = RectangleShape2D.new()
-	#shape.extents = new_card_sprite.texture.get_size() / 2
-	#collision_shape.shape = shape
-	#area.add_child(collision_shape)
-	#new_card_sprite.add_child(area)
-#
-	#active_card_sprite = new_card_sprite
-	#add_child(new_card_sprite)
 
-func _on_card_disparition():
+func _on_card_disappeared():
 	if cards.size() > 1:
 		cards.pop_front()
 		spawn_ennemy_card(cards[randi() % cards.size()])
