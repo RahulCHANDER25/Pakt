@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Area2D
 
 signal disappeared
 
@@ -9,7 +9,8 @@ var can_drag = false
 var max_rotation = 20
 var original_scale: Vector2
 
-func _ready():
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
 	var timer = Timer.new()
 	timer.set_one_shot(true)
 	timer.set_wait_time(0.5)
@@ -19,17 +20,27 @@ func _ready():
 	original_scale = scale
 	call_deferred("_setup_area2d")
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if dragging:
+		var mouse_position = get_global_mouse_position()
+		position = mouse_position
+		var drag_distance = mouse_position.x - drag_start_position.x
+		var drag_percentage = clamp(abs(drag_distance / drag_threshold), 0, 1)
+		print(drag_percentage)
+		var rotation_amount = max_rotation * drag_percentage * sign(drag_distance)
+		var scale_amount = 1 - drag_percentage
+		if scale_amount < 0.5:
+			scale_amount = 0.5
+		rotation_degrees = rotation_amount
+		scale = Vector2(scale_amount, scale_amount)
+
+func setup_card(card_info) -> void:
+	$TextureRect.texture = card_info.texture
+
 func _on_drag_delay_timeout():
 	can_drag = true
 
-func _setup_area2d():
-	var area = get_node_or_null("Area2D")
-	if area:
-		area.input_event.connect(_on_input_event)
-	else:
-		#if Area not loaded yet
-		pass
-	
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
@@ -40,22 +51,10 @@ func _on_input_event(viewport, event, shape_idx):
 				dragging = false
 				_check_drag_direction()
 
-func _process(delta):
-	if dragging:
-		position = get_global_mouse_position()
-		var drag_distance = position.x - drag_start_position.x
-		var drag_percentage = clamp(abs(drag_distance / drag_threshold), 0, 1)
-		var rotation_amount = max_rotation * drag_percentage * sign(drag_distance)
-		var scale_amount = 1 - drag_percentage
-		if scale_amount < 0.5:
-			scale_amount = 0.5
-		rotation_degrees = rotation_amount
-		scale = Vector2(scale_amount, scale_amount)
-		
 func _check_drag_direction():
 	var drag_end_position = get_global_mouse_position()
 	var drag_distance = drag_end_position.x - drag_start_position.x
-	
+
 	if abs(drag_distance) > drag_threshold:
 		if drag_distance < 0:
 			_on_drag_left()
@@ -70,9 +69,13 @@ func _on_drag_left():
 	print("Dragged left")
 	emit_signal("disappeared")
 	queue_free()
-	
+
 
 func _on_drag_right():
 	print("Dragged right")
 	emit_signal("disappeared")
 	queue_free()
+
+
+func _on_card_disappeared() -> void:
+	pass # Replace with function body.
