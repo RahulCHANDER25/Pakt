@@ -5,13 +5,13 @@ const Card = preload("res://ressources/Card.gd")
 
 var cards = [
 	Card.new ("Crab", "Crabby crabby me", 10, -2, preload("res://assets/Sprites/kirby.png")),
-	Card.new ("Hog", "Bad hogz spells", 5, -3, preload("res://assets/Sprites/sound.png")),
+	Card.new ("Hog", "Bad hogz spells", 5, -3, preload("res://assets/Sprites/hedgehog.png")),
 	Card.new ("Crab", "Crabby crabby me", 10, -2, preload("res://assets/Sprites/kirby.png")),
-	Card.new ("Hog", "Bad hogz spells", 5, -3, preload("res://assets/Sprites/sound.png")),
+	Card.new ("Hog", "Bad hogz spells", 5, -3, preload("res://assets/Sprites/hedgehog.png")),
 	Card.new ("Crab", "Crabby crabby me", 10, -2, preload("res://assets/Sprites/kirby.png")),
-	Card.new ("Hog", "Bad hogz spells", 5, -3, preload("res://assets/Sprites/sound.png")),
 	Card.new ("Crab", "Crabby crabby me", 10, -2, preload("res://assets/Sprites/kirby.png")),
-	Card.new ("Hog", "Bad hogz spells", 5, -3, preload("res://assets/Sprites/sound.png")),
+	Card.new ("Hog", "Bad hogz spells", 5, -3, preload("res://assets/Sprites/hedgehog.png")),
+	Card.new ("Hog", "Bad hogz spells", 5, -3, preload("res://assets/Sprites/hedgehog.png")),
 ]
 
 var active_card_sprite
