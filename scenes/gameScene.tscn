@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnvmde5d45qof"]
+[gd_scene load_steps=5 format=3 uid="uid://bnvmde5d45qof"]
 
 [ext_resource type="Script" path="res://scripts/game_scene.gd" id="1_awa5f"]
+[ext_resource type="PackedScene" uid="uid://d4c6objfo6wnn" path="res://scenes/card.tscn" id="2_gf3u0"]
 [ext_resource type="Script" path="res://scripts/audioSfxPlayer.gd" id="2_mecv1"]
-[ext_resource type="PackedScene" uid="uid://bwjbqo8cayg6y" path="res://scenes/hud.tscn" id="4_1ob6f"]
+[ext_resource type="PackedScene" uid="uid://c2mtn6hmf6atj" path="res://scenes/hud.tscn" id="4_1ob6f"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_awa5f")
+card_scene = ExtResource("2_gf3u0")
 
 [node name="HUD" parent="." instance=ExtResource("4_1ob6f")]
 

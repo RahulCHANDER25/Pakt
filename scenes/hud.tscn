@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwjbqo8cayg6y"]
+[gd_scene load_steps=9 format=3 uid="uid://c2mtn6hmf6atj"]
 
 [ext_resource type="FontFile" uid="uid://bkddummnta1v5" path="res://assets/Font/scarow-scarow-regular-400.ttf" id="1_vl71r"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_vy5wg"]

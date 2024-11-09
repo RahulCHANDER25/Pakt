@@ -3,11 +3,11 @@ extends Node2D
 class cardEffect:
 	var stat: String
 	var value: int
-	
+
 	func _init(s: String, i: int):
 		stat = s
 		value = i
-		
+
 @export var title: String
 @export var description: String
 var pass_effects: Array[Dictionary] = []
