@@ -1,7 +1,9 @@
 extends Node
 
-const DraggableCard = preload("res://scripts/draggingCard.gd")
-const Card = preload("res://ressources/Card.gd")
+const Card = preload("res://ressources/CardClass.gd")
+
+@export var card_scene: PackedScene
+
 var mapStats = {
 	"health" : 10,
 	"magic" : 10,
@@ -10,25 +12,7 @@ var mapStats = {
 	"strength" : 10,
 }
 
-var mapStatsNodes = {
-	"health" : $HUD/GUI/GameIcons/HeartCounter/Number,
-	"magic" : $HUD/GUI/GameIcons/MagicCounter/Number,
-	"money" : $HUD/GUI/GameIcons/MoneyCounter/Number,
-	"fame" : $HUD/GUI/GameIcons/FameCounter/Number,
-	"strength" : $HUD/GUI/GameIcons/StrengthCounter/Number,
-}
-
-var cards = [
-	Card.new("Crab", "desc 1",[{"health": 10}, {"magic": -3}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/kirby.png")),
-	Card.new("Hog", "desc 2", [{"magic" : 45} , {"health" : 2}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/hedgehog.png")),
-	Card.new("Crab", "desc 3",[{"health": 10}, {"magic": -3}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/kirby.png")),
-	Card.new("Hog", "desc 4", [{"magic" : 45} , {"health" : 2}], [{"health": 10}, {"magic": -3}],  preload("res://assets/Sprites/hedgehog.png")),
-	Card.new("Crab", "desc 5",[{"health": 10}, {"magic": -3}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/kirby.png")),
-	Card.new("Crab", "desc 6",[{"health": 10}, {"magic": -3}],  [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/kirby.png")),
-	Card.new("Hog", "desc 7", [{"magic" : 45} , {"health" : 2}],[{"health": 10}, {"magic": -3}],  preload("res://assets/Sprites/hedgehog.png")),
-	Card.new("Hog", "dsec 8", [{"magic" : 45} , {"health" : 2}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/hedgehog.png")),
-]
-
+var cards
 var active_card
 
 func refresh(node, key, value):
@@ -36,6 +20,9 @@ func refresh(node, key, value):
 	node.text = str(value)
 
 func _ready():
+	cards = load_enemies("res://assets/Config/card.cfg")
+	if cards.size() == 0:
+		return
 	spawn_ennemy_card(cards[0])
 	randomize()
 	refresh($HUD/GUI/GameIcons/HeartCounter/Number, "health", mapStats["health"])
@@ -44,27 +31,18 @@ func _ready():
 	refresh($HUD/GUI/GameIcons/FameCounter/Number, "fame", mapStats["fame"])
 	refresh($HUD/GUI/GameIcons/StrengthCounter/Number, "strength", mapStats["strength"])
 
-func spawn_ennemy_card(card):
-	var new_card_instance = Card.new(card.title, card.description, card.pass_effects, card.pakt_effects, card.texture)
-	var new_card_sprite = Sprite2D.new()
-	new_card_sprite.texture = new_card_instance.texture
-	
-	new_card_sprite.position = Vector2(get_window().size.x / 2, get_window().size.y / 2)
-	new_card_sprite.set_script(DraggableCard)
-	new_card_sprite.connect("refuse", _on_card_refuse)
-	new_card_sprite.connect("pakt", _on_card_pakt)
 
-	var area = Area2D.new()
-	area.name = "Area2D"
-	var collision_shape = CollisionShape2D.new()
-	var shape = RectangleShape2D.new()
-	shape.extents = new_card_instance.texture.get_size() / 2
-	collision_shape.shape = shape
-	area.add_child(collision_shape)
-	new_card_sprite.add_child(area)
+func spawn_ennemy_card(card_info):
+	# Create a new instance of the Mob scene.
+	var card = card_scene.instantiate()
 
-	active_card = new_card_instance
-	add_child(new_card_sprite)
+	card.setup_card(card_info)
+	card.position = Vector2(get_window().size.x / 2, get_window().size.y / 2)
+	card.connect("refuse", _on_card_refuse)
+	card.connect("pakt", _on_card_pakt)
+
+	$HUD/Description.text = card_info.description
+	add_child(card)
 
 
 func updateStats(effects: Array):
@@ -115,3 +93,24 @@ func _on_card_refuse():
 		spawn_ennemy_card(cards[randi() % cards.size()])
 	else:
 		print("No more cards to spawn")
+
+
+func load_enemies(path: String):
+	var config = ConfigFile.new()
+
+	var err = config.load(path)
+	if err != OK:
+		return []
+	var allCards = []
+	for card in config.get_sections():
+		var new_card = Card.new(
+			config.get_value(card, "title"),
+			config.get_value(card, "description"),
+		)
+		new_card.pass_effects.assign(config.get_value(card, "pass_effects"))
+		new_card.pakt_effects.assign(config.get_value(card, "pakt_effects"))
+		
+		new_card.texture = load(config.get_value(card, "texture"))
+		
+		allCards.push_back(new_card)
+	return allCards

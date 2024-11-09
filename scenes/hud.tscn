@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwjbqo8cayg6y"]
+[gd_scene load_steps=9 format=3 uid="uid://c2mtn6hmf6atj"]
 
 [ext_resource type="FontFile" uid="uid://bkddummnta1v5" path="res://assets/Font/scarow-scarow-regular-400.ttf" id="1_vl71r"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_vy5wg"]
@@ -24,9 +24,9 @@ theme_override_font_sizes/font_size = 64
 
 [node name="GUI" type="MarginContainer" parent="."]
 offset_left = 43.0
-offset_top = 18.0
+offset_top = 7.0
 offset_right = 323.0
-offset_bottom = 105.0
+offset_bottom = 94.0
 scale = Vector2(1.5, 1.5)
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -106,3 +106,9 @@ text = "123"
 label_settings = SubResource("LabelSettings_igmvj")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Description" type="Label" parent="."]
+offset_left = 13.0
+offset_top = 661.0
+offset_right = 53.0
+offset_bottom = 684.0
