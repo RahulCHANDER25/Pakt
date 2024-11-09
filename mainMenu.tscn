@@ -163,7 +163,7 @@ text = "Quit game"
 position = Vector2(169, -44)
 sprite_frames = SubResource("SpriteFrames_8olog")
 animation = &"demon idle"
-frame_progress = 0.0694876
+frame_progress = 0.641851
 script = ExtResource("3_4e4mq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/AnimatedSprite2D"]
@@ -171,7 +171,7 @@ position = Vector2(-223.5, -1.5)
 scale = Vector2(0.869792, 0.889474)
 sprite_frames = SubResource("SpriteFrames_ha3m6")
 animation = &"idle man"
-frame_progress = 0.0737495
+frame_progress = 0.962031
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
