@@ -42,7 +42,8 @@ func spawn_ennemy_card(card):
 	
 	new_card_sprite.position = Vector2(get_window().size.x / 2, get_window().size.y / 2)
 	new_card_sprite.set_script(DraggableCard)
-	new_card_sprite.connect("disappeared", _on_card_disparition)
+	new_card_sprite.connect("refuse", _on_card_refuse)
+	new_card_sprite.connect("pakt", _on_card_pakt)
 
 	var area = Area2D.new()
 	area.name = "Area2D"
@@ -56,7 +57,16 @@ func spawn_ennemy_card(card):
 	active_card = new_card_instance
 	add_child(new_card_sprite)
 
-func _on_card_disparition():
+func _on_card_pakt():
+	if cards.size() > 1:
+		cards.pop_front()
+		if active_card.pass_effects[0].has("health"):
+			print(active_card.pass_effects[0]["health"])
+		spawn_ennemy_card(cards[randi() % cards.size()])
+	else:
+		print("No more cards to spawn")
+
+func _on_card_refuse():
 	if cards.size() > 1:
 		cards.pop_front()
 		if active_card.pass_effects[0].has("health"):
