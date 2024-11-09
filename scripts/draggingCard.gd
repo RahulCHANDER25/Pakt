@@ -13,7 +13,7 @@ func _ready():
 	var timer = Timer.new()
 	timer.set_one_shot(true)
 	timer.set_wait_time(0.5)
-	timer.connect("timeout", Callable(self, "_on_drag_delay_timeout"))
+	timer.connect("timeout", _on_drag_delay_timeout)
 	add_child(timer)
 	timer.start()
 	original_scale = scale
@@ -45,7 +45,6 @@ func _process(delta):
 		position = get_global_mouse_position()
 		var drag_distance = position.x - drag_start_position.x
 		var drag_percentage = clamp(abs(drag_distance / drag_threshold), 0, 1)
-		print(drag_percentage)
 		var rotation_amount = max_rotation * drag_percentage * sign(drag_distance)
 		var scale_amount = 1 - drag_percentage
 		if scale_amount < 0.5:
