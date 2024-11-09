@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://lg3qsqoiclin"]
+[gd_scene load_steps=5 format=3 uid="uid://lg3qsqoiclin"]
 
 [ext_resource type="Texture2D" uid="uid://ce4wperu7oajo" path="res://assets/Sprites/divinity/1.png" id="1_h6n2a"]
 [ext_resource type="Script" path="res://scripts/card.gd" id="1_qngan"]
+[ext_resource type="Script" path="res://scripts/add_effect.gd" id="3_mcqbq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exyd1"]
 size = Vector2(520, 824)
@@ -44,5 +45,27 @@ offset_top = 128.0
 offset_right = -184.0
 offset_bottom = 151.0
 text = "Description"
+
+[node name="PassEffect" type="VBoxContainer" parent="."]
+offset_left = -250.0
+offset_top = 250.0
+offset_right = -159.0
+offset_bottom = 290.0
+script = ExtResource("3_mcqbq")
+
+[node name="Description" type="Label" parent="PassEffect"]
+layout_mode = 2
+text = "Pass effects:"
+
+[node name="PaktEffect" type="VBoxContainer" parent="."]
+offset_left = 30.0
+offset_top = 250.0
+offset_right = 121.0
+offset_bottom = 290.0
+script = ExtResource("3_mcqbq")
+
+[node name="Description" type="Label" parent="PaktEffect"]
+layout_mode = 2
+text = "Pakt effects:"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
