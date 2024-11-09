@@ -14,7 +14,7 @@ func _ready() -> void:
 	var timer = Timer.new()
 	timer.set_one_shot(true)
 	timer.set_wait_time(0.5)
-	timer.connect("timeout", Callable(self, "_on_drag_delay_timeout"))
+	timer.connect("timeout", _on_drag_delay_timeout)
 	add_child(timer)
 	timer.start()
 	original_scale = scale
@@ -50,11 +50,11 @@ func _on_input_event(viewport, event, shape_idx):
 			else:
 				dragging = false
 				_check_drag_direction()
-		
+
 func _check_drag_direction():
 	var drag_end_position = get_global_mouse_position()
 	var drag_distance = drag_end_position.x - drag_start_position.x
-	
+
 	if abs(drag_distance) > drag_threshold:
 		if drag_distance < 0:
 			_on_drag_left()
@@ -69,7 +69,7 @@ func _on_drag_left():
 	print("Dragged left")
 	emit_signal("disappeared")
 	queue_free()
-	
+
 
 func _on_drag_right():
 	print("Dragged right")
