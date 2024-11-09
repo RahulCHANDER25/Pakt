@@ -12,18 +12,12 @@ var mapStats = {
 	"strength" : 10,
 }
 
-var cards = [
-	Card.new ("Mage Stone", "Hello, I'm a stone mage. Do you want pakt with me ?", [{"health": 10}, {"magic": -3}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/divinity/1.png")),
-	Card.new ("See Eyes", "...i give you some light...?", [{"health": 10}, {"magic": -3}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/divinity/2.png")),
-	Card.new ("Thief", "Hurry ! Pakt or not ?", [{"health": 10}, {"magic": -3}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/divinity/3.png")),
-	Card.new ("Muscle", "You envy me no ? pakt with me (of course) !", [{"health": 10}, {"magic": -3}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/divinity/4.png")),
-	Card.new ("Rabbit", "Mushr.. Mushrm.. Mushrmm... pakt ?", [{"health": 10}, {"magic": -3}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/divinity/5.png"))
-]
+var cards
 
 var active_card_sprite
 
 func _ready():
-	cards.assign(load_enemies("res://assets/Config/card.cfg"))
+	cards = load_enemies("res://assets/Config/card.cfg")
 	if cards.size() == 0:
 		return
 	spawn_ennemy_card(cards[0])
@@ -35,12 +29,11 @@ func spawn_ennemy_card(card_info):
 
 	card.setup_card(card_info)
 	card.position = Vector2(get_window().size.x / 2, get_window().size.y / 2)
-	card.connect("disappeared", Callable(self, "_on_card_disappeared"))
+	card.connect("disappeared", _on_card_disappearance)
+
+	$HUD/Description.text = card_info.description
 	add_child(card)
 
-	# $HUD/Description.text = new_card_instance.description
-	# active_card = new_card_instance
-	# add_child(new_card_sprite)
 
 func load_enemies(path: String):
 	var config = ConfigFile.new()
@@ -62,7 +55,7 @@ func load_enemies(path: String):
 		allCards.push_back(new_card)
 	return allCards
 
-func _on_card_disparition():
+func _on_card_disappearance():
 	if cards.size() > 1:
 		cards.pop_front()
 		spawn_ennemy_card(cards[randi() % cards.size()])
