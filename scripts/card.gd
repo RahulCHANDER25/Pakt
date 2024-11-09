@@ -28,7 +28,6 @@ func _process(delta):
 		position = mouse_position
 		var drag_distance = mouse_position.x - drag_start_position.x
 		var drag_percentage = clamp(abs(drag_distance / drag_threshold), 0, 1)
-		print(drag_percentage)
 		var rotation_amount = max_rotation * drag_percentage * sign(drag_distance)
 		var scale_amount = 1 - drag_percentage
 		if scale_amount < 0.5:
