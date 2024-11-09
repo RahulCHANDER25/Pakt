@@ -46,7 +46,6 @@ texture = ExtResource("3_lxvs7")
 
 [node name="Number" type="Label" parent="GUI/GameIcons/HeartCounter"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_vl71r")
 text = "123"
 label_settings = SubResource("LabelSettings_igmvj")
 horizontal_alignment = 1
@@ -61,7 +60,6 @@ texture = ExtResource("4_j73bh")
 
 [node name="Number" type="Label" parent="GUI/GameIcons/MagicCounter"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_vl71r")
 text = "123"
 label_settings = SubResource("LabelSettings_igmvj")
 horizontal_alignment = 1
@@ -76,7 +74,6 @@ texture = ExtResource("5_6d03c")
 
 [node name="Number" type="Label" parent="GUI/GameIcons/StrengthCounter"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_vl71r")
 text = "123"
 label_settings = SubResource("LabelSettings_igmvj")
 horizontal_alignment = 1
@@ -91,7 +88,6 @@ texture = ExtResource("6_fxwra")
 
 [node name="Number" type="Label" parent="GUI/GameIcons/FameCounter"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_vl71r")
 text = "123"
 label_settings = SubResource("LabelSettings_igmvj")
 horizontal_alignment = 1
@@ -106,7 +102,6 @@ texture = ExtResource("7_t376w")
 
 [node name="Number" type="Label" parent="GUI/GameIcons/MoneyCounter"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_vl71r")
 text = "123"
 label_settings = SubResource("LabelSettings_igmvj")
 horizontal_alignment = 1

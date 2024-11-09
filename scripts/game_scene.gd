@@ -13,8 +13,11 @@ var mapStats = {
 }
 
 var cards
+var active_card
 
-var active_card_sprite
+func refresh(node, key, value):
+	mapStats[key] = value
+	node.text = str(value)
 
 func _ready():
 	cards = load_enemies("res://assets/Config/card.cfg")
@@ -22,6 +25,12 @@ func _ready():
 		return
 	spawn_ennemy_card(cards[0])
 	randomize()
+	refresh($HUD/GUI/GameIcons/HeartCounter/Number, "health", mapStats["health"])
+	refresh($HUD/GUI/GameIcons/MagicCounter/Number, "magic", mapStats["magic"])
+	refresh($HUD/GUI/GameIcons/MoneyCounter/Number, "money", mapStats["money"])
+	refresh($HUD/GUI/GameIcons/FameCounter/Number, "fame", mapStats["fame"])
+	refresh($HUD/GUI/GameIcons/StrengthCounter/Number, "strength", mapStats["strength"])
+
 
 func spawn_ennemy_card(card_info):
 	# Create a new instance of the Mob scene.
@@ -29,10 +38,61 @@ func spawn_ennemy_card(card_info):
 
 	card.setup_card(card_info)
 	card.position = Vector2(get_window().size.x / 2, get_window().size.y / 2)
-	card.connect("disappeared", _on_card_disappearance)
+	card.connect("refuse", _on_card_refuse)
+	card.connect("pakt", _on_card_pakt)
 
 	$HUD/Description.text = card_info.description
 	add_child(card)
+
+
+func updateStats(effects: Array):
+	for effect in effects:
+		for key in effect.keys():
+			match key:
+				"health":
+					refresh($HUD/GUI/GameIcons/HeartCounter/Number, "health", mapStats["health"] + effect["health"])
+				"magic":
+					refresh($HUD/GUI/GameIcons/MagicCounter/Number, "magic", mapStats["magic"] + effect["magic"])
+				"money":
+					refresh($HUD/GUI/GameIcons/MoneyCounter/Number, "money",  mapStats["money"] + effect["money"])
+				"fame":
+					refresh($HUD/GUI/GameIcons/FameCounter/Number, "fame", mapStats["fame"] + effect["fame"])
+				"strength":
+					refresh($HUD/GUI/GameIcons/StrengthCounter/Number, "strength", mapStats["strength"] + effect["strength"])
+
+
+
+func _on_card_pakt():
+	if cards.size() > 0:
+		var card_to_remove_index = -1
+		for i in range(cards.size()):
+			if cards[i].description == active_card.description:
+				card_to_remove_index = i
+				break
+		
+		if card_to_remove_index != -1:
+			cards.pop_at(card_to_remove_index)
+			updateStats(active_card.pakt_effects)
+	if cards.size() > 0:
+		spawn_ennemy_card(cards[randi() % cards.size()])
+	else:
+		print("No more cards to spawn")
+
+func _on_card_refuse():
+	if cards.size() > 1:
+		var card_to_remove_index = -1
+		for i in range(cards.size()):
+			if cards[i].description == active_card.description:
+				card_to_remove_index = i
+				break
+			
+		if card_to_remove_index != -1:
+			cards.pop_at(card_to_remove_index)
+			updateStats(active_card.pass_effects)
+	if cards.size() > 0:
+		spawn_ennemy_card(cards[randi() % cards.size()])
+	else:
+		print("No more cards to spawn")
 
 
 func load_enemies(path: String):
@@ -54,10 +114,3 @@ func load_enemies(path: String):
 		
 		allCards.push_back(new_card)
 	return allCards
-
-func _on_card_disappearance():
-	if cards.size() > 1:
-		cards.pop_front()
-		spawn_ennemy_card(cards[randi() % cards.size()])
-	else:
-		print("No more cards to spawn")

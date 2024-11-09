@@ -1,6 +1,7 @@
 extends Area2D
 
-signal disappeared
+signal refuse
+signal pakt
 
 var dragging = false
 var drag_start_position = Vector2.ZERO
@@ -67,13 +68,13 @@ func _check_drag_direction():
 
 func _on_drag_left():
 	print("Dragged left")
-	emit_signal("disappeared")
+	emit_signal("refuse")
 	queue_free()
 
 
 func _on_drag_right():
 	print("Dragged right")
-	emit_signal("disappeared")
+	emit_signal("pakt")
 	queue_free()
 
 
