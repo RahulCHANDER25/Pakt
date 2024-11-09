@@ -5,6 +5,8 @@
 [ext_resource type="Script" path="res://scripts/draggingCard.gd" id="3_d7rwe"]
 [ext_resource type="PackedScene" uid="uid://bwjbqo8cayg6y" path="res://scenes/hud.tscn" id="4_1ob6f"]
 
+[ext_resource type="Script" path="res://scripts/audioSfxPlayer.gd" id="2_mecv1"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttswh"]
 size = Vector2(357.943, 316.056)
 
@@ -25,3 +27,6 @@ position = Vector2(0, -3.92613)
 shape = SubResource("RectangleShape2D_ttswh")
 
 [node name="HUD" parent="." instance=ExtResource("4_1ob6f")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("2_mecv1")
