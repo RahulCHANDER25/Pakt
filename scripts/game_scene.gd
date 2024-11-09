@@ -53,6 +53,7 @@ func spawn_ennemy_card(card):
 	area.add_child(collision_shape)
 	new_card_sprite.add_child(area)
 
+	$HUD/Description.text = new_card_instance.description
 	active_card = new_card_instance
 	add_child(new_card_sprite)
 
