@@ -39,6 +39,8 @@ func setup_card(card_info) -> void:
 	$TextureRect.texture = card_info.texture
 	$Title.text = card_info.title
 	$Description.text = card_info.description
+	$PassEffect.add_effect(card_info.pass_effects)
+	$PaktEffect.add_effect(card_info.pakt_effects)
 
 
 func _on_drag_delay_timeout():
