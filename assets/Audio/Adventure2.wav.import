@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ckn3kjp10sopm"
-path="res://.godot/imported/Adventure2.wav-2b61a2140622ab1cf22c4bbd305bcd7e.sample"
+path="res://.godot/imported/Adventure2.wav-1c3eb4205302c7984a43b76884932abb.sample"
 
 [deps]
 
-source_file="res://Adventure2.wav"
-dest_files=["res://.godot/imported/Adventure2.wav-2b61a2140622ab1cf22c4bbd305bcd7e.sample"]
+source_file="res://assets/Audio/Adventure2.wav"
+dest_files=["res://.godot/imported/Adventure2.wav-1c3eb4205302c7984a43b76884932abb.sample"]
 
 [params]
 

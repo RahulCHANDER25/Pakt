@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbbswot07mpvi"
-path="res://.godot/imported/kirby.png-b0d2aa6e195327170e65c22d60064c6d.ctex"
+uid="uid://d2jtm5yno6u6x"
+path="res://.godot/imported/sound.png-a5aae4aacdc0012243f31eb1368eca5b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://kirby.png"
-dest_files=["res://.godot/imported/kirby.png-b0d2aa6e195327170e65c22d60064c6d.ctex"]
+source_file="res://assets/Sprites/sound.png"
+dest_files=["res://.godot/imported/sound.png-a5aae4aacdc0012243f31eb1368eca5b.ctex"]
 
 [params]
 

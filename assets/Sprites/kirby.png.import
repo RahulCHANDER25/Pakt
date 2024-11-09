@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duifytj2mxaop"
-path="res://.godot/imported/IDLE.png-0b17fd4c8db677e649e8a850d5452a66.ctex"
+uid="uid://bbbswot07mpvi"
+path="res://.godot/imported/kirby.png-db22743d52453913f878b9a277384df0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://IDLE.png"
-dest_files=["res://.godot/imported/IDLE.png-0b17fd4c8db677e649e8a850d5452a66.ctex"]
+source_file="res://assets/Sprites/kirby.png"
+dest_files=["res://.godot/imported/kirby.png-db22743d52453913f878b9a277384df0.ctex"]
 
 [params]
 

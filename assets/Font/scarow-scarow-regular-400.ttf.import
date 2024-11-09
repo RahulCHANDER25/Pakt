@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bkddummnta1v5"
-path="res://.godot/imported/scarow-scarow-regular-400.ttf-a673e59c942c10a51a9a75e92a1b9fb5.fontdata"
+path="res://.godot/imported/scarow-scarow-regular-400.ttf-8dc37788b0de51ca9515c8a9781a785b.fontdata"
 
 [deps]
 
-source_file="res://scarow-scarow-regular-400.ttf"
-dest_files=["res://.godot/imported/scarow-scarow-regular-400.ttf-a673e59c942c10a51a9a75e92a1b9fb5.fontdata"]
+source_file="res://assets/Font/scarow-scarow-regular-400.ttf"
+dest_files=["res://.godot/imported/scarow-scarow-regular-400.ttf-8dc37788b0de51ca9515c8a9781a785b.fontdata"]
 
 [params]
 

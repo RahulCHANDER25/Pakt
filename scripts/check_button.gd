@@ -11,7 +11,7 @@ func _on_toggled(toggled_on: bool) -> void:
 
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://mainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/mainMenu.tscn")
 
 
 func _on_h_slider_value_changed(value: float) -> void:
