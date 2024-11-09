@@ -31,7 +31,6 @@ func _ready():
 	refresh($HUD/GUI/GameIcons/FameCounter/Number, "fame", mapStats["fame"])
 	refresh($HUD/GUI/GameIcons/StrengthCounter/Number, "strength", mapStats["strength"])
 
-
 func spawn_ennemy_card(card_info):
 	# Create a new instance of the Mob scene.
 	var card = card_scene.instantiate()
