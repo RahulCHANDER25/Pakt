@@ -111,3 +111,14 @@ text = "123"
 label_settings = SubResource("LabelSettings_igmvj")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Description" type="Label" parent="."]
+offset_left = 6.0
+offset_top = 504.0
+offset_right = 521.0
+offset_bottom = 601.0
+text = "Je suis une engence des ténèbres agenouillez vous devant moi
+sales pleutres que vous êtes !
+
+
+Je vous propose tout de même un pacte de sang et de prospérité."
