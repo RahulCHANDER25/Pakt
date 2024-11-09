@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciyyy4qfv4mkd"]
+
+[ext_resource type="Texture2D" uid="uid://b4yqwtjk67vge" path="res://orange-png-png_75700.jpg" id="1_16p5c"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(486, 212)
+texture = ExtResource("1_16p5c")
