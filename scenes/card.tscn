@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4c6objfo6wnn"]
+[gd_scene load_steps=4 format=3 uid="uid://lg3qsqoiclin"]
 
 [ext_resource type="Texture2D" uid="uid://ce4wperu7oajo" path="res://assets/Sprites/divinity/1.png" id="1_h6n2a"]
 [ext_resource type="Script" path="res://scripts/card.gd" id="1_qngan"]
@@ -30,5 +30,19 @@ texture = ExtResource("1_h6n2a")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, -4)
 shape = SubResource("RectangleShape2D_exyd1")
+
+[node name="Title" type="Label" parent="."]
+offset_left = -224.0
+offset_top = 88.0
+offset_right = -184.0
+offset_bottom = 111.0
+text = "Title"
+
+[node name="Description" type="Label" parent="."]
+offset_left = -224.0
+offset_top = 128.0
+offset_right = -184.0
+offset_bottom = 151.0
+text = "Description"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

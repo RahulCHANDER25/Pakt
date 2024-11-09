@@ -37,6 +37,9 @@ func _process(delta):
 
 func setup_card(card_info) -> void:
 	$TextureRect.texture = card_info.texture
+	$Title.text = card_info.title
+	$Description.text = card_info.description
+
 
 func _on_drag_delay_timeout():
 	can_drag = true

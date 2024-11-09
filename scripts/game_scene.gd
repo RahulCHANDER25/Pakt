@@ -40,11 +40,7 @@ func spawn_ennemy_card(card_info):
 	card.position = Vector2(get_window().size.x / 2, get_window().size.y / 2)
 	card.connect("refuse", _on_card_refuse)
 	card.connect("pakt", _on_card_pakt)
-
-	active_card = card_info
-	$HUD/Description.text = card_info.description
 	add_child(card)
-
 
 func updateStats(effects: Array):
 	for effect in effects:
@@ -66,10 +62,10 @@ func updateStats(effects: Array):
 func _on_card_pakt():
 	if cards.size() > 0:
 		var card_to_remove_index = -1
-		for i in range(cards.size()):
-			if cards[i].description == active_card.description:
-				card_to_remove_index = i
-				break
+		#for i in range(cards.size()):
+			#if cards[i].description == active_card.description:
+				#card_to_remove_index = i
+				#break
 		
 		if card_to_remove_index != -1:
 			cards.pop_at(card_to_remove_index)
@@ -82,10 +78,10 @@ func _on_card_pakt():
 func _on_card_refuse():
 	if cards.size() > 1:
 		var card_to_remove_index = -1
-		for i in range(cards.size()):
-			if cards[i].description == active_card.description:
-				card_to_remove_index = i
-				break
+		#for i in range(cards.size()):
+			#if cards[i].description == active_card.description:
+				#card_to_remove_index = i
+				#break
 			
 		if card_to_remove_index != -1:
 			cards.pop_at(card_to_remove_index)
