@@ -14,7 +14,7 @@ font_size = 10
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_vy5wg")
 
-[node name="Message" type="Label" parent="."]
+[node name="Debug" type="Label" parent="."]
 offset_left = 148.0
 offset_top = 35.0
 offset_right = 351.0
