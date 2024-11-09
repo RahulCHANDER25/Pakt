@@ -41,6 +41,7 @@ func spawn_ennemy_card(card_info):
 	card.connect("refuse", _on_card_refuse)
 	card.connect("pakt", _on_card_pakt)
 
+	active_card = card_info
 	$HUD/Description.text = card_info.description
 	add_child(card)
 
