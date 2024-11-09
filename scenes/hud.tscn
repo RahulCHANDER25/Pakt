@@ -24,9 +24,9 @@ theme_override_font_sizes/font_size = 64
 
 [node name="GUI" type="MarginContainer" parent="."]
 offset_left = 43.0
-offset_top = 18.0
+offset_top = 7.0
 offset_right = 323.0
-offset_bottom = 105.0
+offset_bottom = 94.0
 scale = Vector2(1.5, 1.5)
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -113,12 +113,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Description" type="Label" parent="."]
-offset_left = 6.0
-offset_top = 504.0
-offset_right = 521.0
-offset_bottom = 601.0
-text = "Je suis une engence des ténèbres agenouillez vous devant moi
-sales pleutres que vous êtes !
-
-
-Je vous propose tout de même un pacte de sang et de prospérité."
+offset_left = 13.0
+offset_top = 661.0
+offset_right = 53.0
+offset_bottom = 684.0
