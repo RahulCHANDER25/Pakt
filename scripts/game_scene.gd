@@ -19,14 +19,14 @@ var mapStatsNodes = {
 }
 
 var cards = [
-	Card.new ("Crab", "Crabby crabby me",[{"health": 10}, {"magic": -3}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/kirby.png")),
-	Card.new ("Hog", "Bad hogz spells", [{"magic" : 45} , {"health" : 2}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/hedgehog.png")),
-	Card.new ("Crab", "Crabby crabby me",[{"health": 10}, {"magic": -3}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/kirby.png")),
-	Card.new ("Hog", "Bad hogz spells", [{"magic" : 45} , {"health" : 2}], [{"health": 10}, {"magic": -3}],  preload("res://assets/Sprites/hedgehog.png")),
-	Card.new ("Crab", "Crabby crabby me",[{"health": 10}, {"magic": -3}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/kirby.png")),
-	Card.new ("Crab", "Crabby crabby me",[{"health": 10}, {"magic": -3}],  [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/kirby.png")),
-	Card.new ("Hog", "Bad hogz spells", [{"magic" : 45} , {"health" : 2}],[{"health": 10}, {"magic": -3}],  preload("res://assets/Sprites/hedgehog.png")),
-	Card.new ("Hog", "Bad hogz spells", [{"magic" : 45} , {"health" : 2}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/hedgehog.png")),
+	Card.new("Crab", "desc 1",[{"health": 10}, {"magic": -3}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/kirby.png")),
+	Card.new("Hog", "desc 2", [{"magic" : 45} , {"health" : 2}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/hedgehog.png")),
+	Card.new("Crab", "desc 3",[{"health": 10}, {"magic": -3}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/kirby.png")),
+	Card.new("Hog", "desc 4", [{"magic" : 45} , {"health" : 2}], [{"health": 10}, {"magic": -3}],  preload("res://assets/Sprites/hedgehog.png")),
+	Card.new("Crab", "desc 5",[{"health": 10}, {"magic": -3}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/kirby.png")),
+	Card.new("Crab", "desc 6",[{"health": 10}, {"magic": -3}],  [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/kirby.png")),
+	Card.new("Hog", "desc 7", [{"magic" : 45} , {"health" : 2}],[{"health": 10}, {"magic": -3}],  preload("res://assets/Sprites/hedgehog.png")),
+	Card.new("Hog", "dsec 8", [{"magic" : 45} , {"health" : 2}], [{"health": 10}, {"magic": -3}], preload("res://assets/Sprites/hedgehog.png")),
 ]
 
 var active_card
@@ -85,23 +85,33 @@ func updateStats(effects: Array):
 
 
 func _on_card_pakt():
-	if cards.size() > 1:
-		cards.pop_front()
-		updateStats(active_card.pakt_effects)
+	if cards.size() > 0:
+		var card_to_remove_index = -1
+		for i in range(cards.size()):
+			if cards[i].description == active_card.description:
+				card_to_remove_index = i
+				break
+		
+		if card_to_remove_index != -1:
+			cards.pop_at(card_to_remove_index)
+			updateStats(active_card.pakt_effects)
+	if cards.size() > 0:
 		spawn_ennemy_card(cards[randi() % cards.size()])
-		print(mapStats["health"])
-		print(mapStats["magic"])
-		print(mapStats["fame"])
 	else:
 		print("No more cards to spawn")
 
 func _on_card_refuse():
 	if cards.size() > 1:
-		cards.pop_front()
-		updateStats(active_card.pass_effects)
+		var card_to_remove_index = -1
+		for i in range(cards.size()):
+			if cards[i].description == active_card.description:
+				card_to_remove_index = i
+				break
+			
+		if card_to_remove_index != -1:
+			cards.pop_at(card_to_remove_index)
+			updateStats(active_card.pass_effects)
+	if cards.size() > 0:
 		spawn_ennemy_card(cards[randi() % cards.size()])
-		print(mapStats["health"])
-		print(mapStats["magic"])
-		print(mapStats["fame"])
 	else:
 		print("No more cards to spawn")
