@@ -6,20 +6,12 @@ signal pakt
 var dragging = false
 var drag_start_position = Vector2.ZERO
 var drag_threshold = 160
-var can_drag = false
 var max_rotation = 20
 var original_scale: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var timer = Timer.new()
-	timer.set_one_shot(true)
-	timer.set_wait_time(0.5)
-	timer.connect("timeout", _on_drag_delay_timeout)
-	add_child(timer)
-	timer.start()
 	original_scale = scale
-	call_deferred("_setup_area2d")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -42,16 +34,12 @@ func setup_card(card_info) -> void:
 	$PassEffect.add_effect(card_info.pass_effects)
 	$PaktEffect.add_effect(card_info.pakt_effects)
 
-
-func _on_drag_delay_timeout():
-	can_drag = true
-
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
 				dragging = true
-				drag_start_position = get_global_mouse_position()
+				drag_start_position = Vector2(get_window().size.x / 2, get_window().size.y / 2)
 			else:
 				dragging = false
 				_check_drag_direction()
@@ -71,16 +59,12 @@ func _check_drag_direction():
 		scale = original_scale
 
 func _on_drag_left():
-	print("Dragged left")
-	emit_signal("refuse")
+	refuse.emit()
 	queue_free()
-
 
 func _on_drag_right():
-	print("Dragged right")
-	emit_signal("pakt")
+	pakt.emit()
 	queue_free()
-
 
 func _on_card_disappeared() -> void:
 	pass # Replace with function body.

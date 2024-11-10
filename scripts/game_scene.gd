@@ -57,14 +57,13 @@ func _on_card_pakt():
 			if cards[i].title == active_card.title:
 				card_to_remove_index = i
 				break
-		
+
 		if card_to_remove_index != -1:
 			cards.pop_at(card_to_remove_index)
 			updateStats(active_card.pakt_effects)
 	if cards.size() > 0:
 		spawn_ennemy_card(cards[randi() % cards.size()])
 	else:
-		print("No more cards to spawn")
 		get_tree().change_scene_to_file("res://scenes/stair.tscn")
 
 func _on_card_refuse():
@@ -74,14 +73,13 @@ func _on_card_refuse():
 			if cards[i].title == active_card.title:
 				card_to_remove_index = i
 				break
-			
+
 		if card_to_remove_index != -1:
 			cards.pop_at(card_to_remove_index)
 			updateStats(active_card.pass_effects)
 	if cards.size() > 0:
 		spawn_ennemy_card(cards[randi() % cards.size()])
 	else:
-		print("No more cards to spawn")
 		get_tree().change_scene_to_file("res://scenes/stair.tscn")
 
 func load_enemies(path: String):
@@ -98,8 +96,8 @@ func load_enemies(path: String):
 		)
 		new_card.pass_effects.assign(config.get_value(card, "pass_effects"))
 		new_card.pakt_effects.assign(config.get_value(card, "pakt_effects"))
-		
+
 		new_card.texture = load(config.get_value(card, "texture"))
-		
+
 		allCards.push_back(new_card)
 	return allCards
