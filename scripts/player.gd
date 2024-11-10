@@ -27,11 +27,3 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-
-
-func _on_player_area_2d_hit() -> void:
-	PlayerStats.mapStats["health"] -= 1
-	print("HP: %d" % PlayerStats.mapStats["health"])
-	if PlayerStats.mapStats["health"] <= 0:
-		print("DEAD")
-	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ovwbjy2ausdq"]
+[gd_scene load_steps=12 format=3 uid="uid://ovwbjy2ausdq"]
 
 [ext_resource type="Script" path="res://scripts/stair.gd" id="1_0lka4"]
 [ext_resource type="Texture2D" uid="uid://0nr3k6yblvnu" path="res://assets/Sprites/fame_icon.png" id="1_lsokl"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/stairsGenerator.gd" id="4_p0rom"]
 [ext_resource type="PackedScene" uid="uid://ccpsc0lwq3nag" path="res://scenes/step.tscn" id="5_d4ioo"]
 [ext_resource type="Script" path="res://scripts/player_area_2d.gd" id="6_ypnay"]
+[ext_resource type="PackedScene" uid="uid://bwjbqo8cayg6y" path="res://scenes/hud.tscn" id="10_5rw2g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb8i2"]
 
@@ -50,7 +51,9 @@ target_path = NodePath("../Player")
 
 [node name="BoxTimer" type="Timer" parent="."]
 
+[node name="HUD" parent="." instance=ExtResource("10_5rw2g")]
+
 [connection signal="body_entered" from="Player/PlayerArea2d" to="Player/PlayerArea2d" method="_on_body_entered"]
-[connection signal="hit" from="Player/PlayerArea2d" to="Player" method="_on_player_area_2d_hit"]
+[connection signal="hit" from="Player/PlayerArea2d" to="." method="_on_player_area_2d_hit"]
 [connection signal="timeout" from="SkyBallTimer" to="." method="_on_sky_ball_timer_timeout"]
 [connection signal="timeout" from="BoxTimer" to="." method="_on_box_timer_timeout"]
