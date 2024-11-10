@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://fvn4bpbrc88t"]
+
+[ext_resource type="Script" path="res://scripts/platform.gd" id="1_wogks"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2f2ja"]
+size = Vector2(493, 98)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(-9, -7)
+script = ExtResource("1_wogks")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(263.5, 77)
+shape = SubResource("RectangleShape2D_2f2ja")
+
+[node name="ColorRect" type="ColorRect" parent="Platform"]
+offset_left = 7.0
+offset_top = 34.0
+offset_right = 516.0
+offset_bottom = 148.0
+color = Color(0, 0, 0, 1)
+
+[node name="VictoryLabel" type="Label" parent="."]
+offset_left = 61.0
+offset_top = -85.0
+offset_right = 460.0
+offset_bottom = 10.0
+theme_override_font_sizes/font_size = 30
