@@ -5,7 +5,7 @@ extends Node2D
 @export var stair_width = 65
 @export var vertical_spacing = 50
 var stair_counter = 0
-var max_steps = 40
+var max_steps = 250
 var win = false
 
 var last_stair_position = Vector2.ZERO

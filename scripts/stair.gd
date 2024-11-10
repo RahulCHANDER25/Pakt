@@ -9,10 +9,10 @@ func refresh(node, key, value):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$BoxTimer.wait_time = 2
+	$BoxTimer.wait_time = 2 * abs((PlayerStats.mapStats["fame"] / 20))
 	$BoxTimer.start()
 
-	$SkyBallTimer.wait_time = 0.75
+	$SkyBallTimer.wait_time = 0.5 * abs((PlayerStats.mapStats["fame"] / 20))
 	$SkyBallTimer.start()
 
 	refresh($HUD/GUI/GameIcons/HeartCounter/Number, "health", PlayerStats.mapStats["health"])
@@ -33,7 +33,7 @@ func _on_sky_ball_timer_timeout() -> void:
 
 	var view = get_viewport()
 	sky_ball.position = Vector2(
-		(view.get_camera_2d().global_position.x - get_window().size.x) + randf_range(2 * view.size.x / 3, view.size.x),
+		(view.get_camera_2d().global_position.x - get_window().size.x) + randf_range(4 * view.size.x / 5, view.size.x),
 		view.get_camera_2d().global_position.y - (get_window().size.y)
 	)
 	add_child(sky_ball)
@@ -44,7 +44,7 @@ func _on_box_timer_timeout() -> void:
 
 	var view = get_viewport()
 	box.position = Vector2(
-		(view.get_camera_2d().global_position.x - get_window().size.x) + randf_range(3 * view.size.x / 4, view.size.x),
+		(view.get_camera_2d().global_position.x - get_window().size.x) + randf_range(4 * view.size.x / 5, view.size.x),
 		view.get_camera_2d().global_position.y - (get_window().size.y)
 	)
 	add_child(box)
@@ -54,4 +54,4 @@ func _on_player_area_2d_hit() -> void:
 	PlayerStats.mapStats["health"] -= 1
 	refresh($HUD/GUI/GameIcons/HeartCounter/Number, "health", PlayerStats.mapStats["health"])
 	if PlayerStats.mapStats["health"] <= 0:
-		print("DEAD")
+		get_tree().change_scene_to_file("res://scenes/mainMenu.tscn")

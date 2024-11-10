@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 signal hit
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -800.0
+var SPEED = 300.0 + (PlayerStats.mapStats["magic"] * 4)
+var JUMP_VELOCITY = -550.0 + ((PlayerStats.mapStats["strength"] * 8) * -1)
 
 func _ready() -> void:
 	pass

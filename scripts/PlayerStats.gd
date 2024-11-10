@@ -1,9 +1,9 @@
 extends Node
 
 var mapStats = {
-	"health" : 10,
-	"magic" : 10,
-	"money" : 10,
-	"fame" : 10,
-	"strength" : 10,
+	"health" : 1,
+	"magic" : 1,
+	"money" : 1,
+	"fame" : 1,
+	"strength" : 1,
 }
