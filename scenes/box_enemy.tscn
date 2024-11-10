@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgai8ej7py65d"]
+
+[ext_resource type="Texture2D" uid="uid://dw1a13h7obr1w" path="res://assets/Sprites/BoxObstacle.png" id="1_qef4b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ytf23"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qef4b")
+}],
+"loop": true,
+"name": &"skyBallStates",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50sij"]
+size = Vector2(31, 26)
+
+[node name="BoxObstaclesEnemy" type="RigidBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ytf23")
+animation = &"skyBallStates"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_50sij")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(1.6, 1.05)

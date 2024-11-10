@@ -7,10 +7,8 @@ func _ready() -> void:
 	pass
 
 func _process(delta):
-
 	if (global_position.x < get_viewport().get_camera_2d().global_position.x - (get_window().size.x / 2)):
 		global_position.x = get_viewport().get_camera_2d().global_position.x - (get_window().size.x / 2)
-	pass
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
