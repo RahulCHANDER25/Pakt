@@ -4,19 +4,11 @@ const Card = preload("res://ressources/CardClass.gd")
 
 @export var card_scene: PackedScene
 
-var mapStats = {
-	"health" : 10,
-	"magic" : 10,
-	"money" : 10,
-	"fame" : 10,
-	"strength" : 10,
-}
-
 var cards
 var active_card
 
 func refresh(node, key, value):
-	mapStats[key] = value
+	PlayerStats.mapStats[key] = value
 	node.text = str(value)
 
 func _ready():
@@ -25,11 +17,11 @@ func _ready():
 		return
 	spawn_ennemy_card(cards[0])
 	randomize()
-	refresh($HUD/GUI/GameIcons/HeartCounter/Number, "health", mapStats["health"])
-	refresh($HUD/GUI/GameIcons/MagicCounter/Number, "magic", mapStats["magic"])
-	refresh($HUD/GUI/GameIcons/MoneyCounter/Number, "money", mapStats["money"])
-	refresh($HUD/GUI/GameIcons/FameCounter/Number, "fame", mapStats["fame"])
-	refresh($HUD/GUI/GameIcons/StrengthCounter/Number, "strength", mapStats["strength"])
+	refresh($HUD/GUI/GameIcons/HeartCounter/Number, "health", PlayerStats.mapStats["health"])
+	refresh($HUD/GUI/GameIcons/MagicCounter/Number, "magic", PlayerStats.mapStats["magic"])
+	refresh($HUD/GUI/GameIcons/MoneyCounter/Number, "money", PlayerStats.mapStats["money"])
+	refresh($HUD/GUI/GameIcons/FameCounter/Number, "fame", PlayerStats.mapStats["fame"])
+	refresh($HUD/GUI/GameIcons/StrengthCounter/Number, "strength", PlayerStats.mapStats["strength"])
 
 func spawn_ennemy_card(card_info):
 	# Create a new instance of the Mob scene.
@@ -47,15 +39,15 @@ func updateStats(effects: Array):
 		for key in effect.keys():
 			match key:
 				"health":
-					refresh($HUD/GUI/GameIcons/HeartCounter/Number, "health", mapStats["health"] + effect["health"])
+					refresh($HUD/GUI/GameIcons/HeartCounter/Number, "health", PlayerStats.mapStats["health"] + effect["health"])
 				"magic":
-					refresh($HUD/GUI/GameIcons/MagicCounter/Number, "magic", mapStats["magic"] + effect["magic"])
+					refresh($HUD/GUI/GameIcons/MagicCounter/Number, "magic", PlayerStats.mapStats["magic"] + effect["magic"])
 				"money":
-					refresh($HUD/GUI/GameIcons/MoneyCounter/Number, "money",  mapStats["money"] + effect["money"])
+					refresh($HUD/GUI/GameIcons/MoneyCounter/Number, "money",  PlayerStats.mapStats["money"] + effect["money"])
 				"fame":
-					refresh($HUD/GUI/GameIcons/FameCounter/Number, "fame", mapStats["fame"] + effect["fame"])
+					refresh($HUD/GUI/GameIcons/FameCounter/Number, "fame", PlayerStats.mapStats["fame"] + effect["fame"])
 				"strength":
-					refresh($HUD/GUI/GameIcons/StrengthCounter/Number, "strength", mapStats["strength"] + effect["strength"])
+					refresh($HUD/GUI/GameIcons/StrengthCounter/Number, "strength", PlayerStats.mapStats["strength"] + effect["strength"])
 
 
 func _on_card_pakt():
@@ -73,6 +65,7 @@ func _on_card_pakt():
 		spawn_ennemy_card(cards[randi() % cards.size()])
 	else:
 		print("No more cards to spawn")
+		get_tree().change_scene_to_file("res://scenes/stair.tscn")
 
 func _on_card_refuse():
 	if cards.size() > 0:
@@ -90,7 +83,7 @@ func _on_card_refuse():
 		spawn_ennemy_card(cards[randi() % cards.size()])
 	else:
 		print("No more cards to spawn")
-
+		get_tree().change_scene_to_file("res://scenes/stair.tscn")
 
 func load_enemies(path: String):
 	var config = ConfigFile.new()
