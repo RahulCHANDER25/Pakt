@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ovwbjy2ausdq"]
+[gd_scene load_steps=19 format=3 uid="uid://ovwbjy2ausdq"]
 
 [ext_resource type="Script" path="res://scripts/stair.gd" id="1_0lka4"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ofkw8"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/player_area_2d.gd" id="6_ypnay"]
 [ext_resource type="PackedScene" uid="uid://fvn4bpbrc88t" path="res://scenes/paradise.tscn" id="8_fay16"]
 [ext_resource type="PackedScene" uid="uid://bwjbqo8cayg6y" path="res://scenes/hud.tscn" id="10_5rw2g"]
+[ext_resource type="AudioStream" uid="uid://ckn3kjp10sopm" path="res://assets/Audio/Adventure2.wav" id="12_qaaw8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb8i2"]
 
@@ -93,6 +94,10 @@ target_path = NodePath("../Player")
 [node name="BoxTimer" type="Timer" parent="."]
 
 [node name="HUD" parent="." instance=ExtResource("10_5rw2g")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_qaaw8")
+autoplay = true
 
 [connection signal="body_entered" from="Player/PlayerArea2d" to="Player/PlayerArea2d" method="_on_body_entered"]
 [connection signal="hit" from="Player/PlayerArea2d" to="." method="_on_player_area_2d_hit"]

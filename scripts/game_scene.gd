@@ -51,6 +51,7 @@ func updateStats(effects: Array):
 
 
 func _on_card_pakt():
+	$Audio.play()
 	if cards.size() > 0:
 		var card_to_remove_index = -1
 		for i in range(cards.size()):
@@ -67,6 +68,7 @@ func _on_card_pakt():
 		get_tree().change_scene_to_file("res://scenes/stair.tscn")
 
 func _on_card_refuse():
+	$Audio.play()
 	if cards.size() > 0:
 		var card_to_remove_index = -1
 		for i in range(cards.size()):
