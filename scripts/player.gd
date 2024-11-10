@@ -13,6 +13,9 @@ func _process(delta):
 		global_position.x = get_viewport().get_camera_2d().global_position.x - (get_window().size.x / 2)
 
 func _physics_process(delta: float) -> void:
+	if global_position.y > 500:
+		get_tree().change_scene_to_file("res://scenes/mainMenu.tscn")
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

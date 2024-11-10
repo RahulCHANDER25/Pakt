@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ovwbjy2ausdq"]
+[gd_scene load_steps=13 format=3 uid="uid://ovwbjy2ausdq"]
 
 [ext_resource type="Script" path="res://scripts/stair.gd" id="1_0lka4"]
 [ext_resource type="Texture2D" uid="uid://0nr3k6yblvnu" path="res://assets/Sprites/fame_icon.png" id="1_lsokl"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ccpsc0lwq3nag" path="res://scenes/step.tscn" id="5_d4ioo"]
 [ext_resource type="Script" path="res://scripts/player_area_2d.gd" id="6_ypnay"]
 [ext_resource type="PackedScene" uid="uid://bwjbqo8cayg6y" path="res://scenes/hud.tscn" id="10_5rw2g"]
+[ext_resource type="PackedScene" uid="uid://fvn4bpbrc88t" path="res://scenes/paradise.tscn" id="8_fay16"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb8i2"]
 
@@ -41,6 +42,7 @@ shape = SubResource("RectangleShape2D_xb8i2")
 position = Vector2(-633.653, 553.755)
 script = ExtResource("4_p0rom")
 stair_scene = ExtResource("5_d4ioo")
+paradise_scene = ExtResource("8_fay16")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(5.53082, -62.8841)
