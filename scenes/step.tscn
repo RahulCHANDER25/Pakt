@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccpsc0lwq3nag"]
+[gd_scene load_steps=4 format=3 uid="uid://ccpsc0lwq3nag"]
 
+[ext_resource type="Script" path="res://scripts/step.gd" id="1_40a2x"]
 [ext_resource type="Texture2D" uid="uid://7b2l72hbrufy" path="res://icon.svg" id="1_owxcf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6lrwc"]
 size = Vector2(72, 69)
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 physics_interpolation_mode = 2
+script = ExtResource("1_40a2x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-1.24998, -0.500023)
@@ -18,3 +20,7 @@ shape = SubResource("RectangleShape2D_6lrwc")
 position = Vector2(1.87501, -1.75002)
 scale = Vector2(0.576172, 0.566406)
 texture = ExtResource("1_owxcf")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="StaticBody2D"]
+
+[connection signal="screen_exited" from="StaticBody2D/VisibleOnScreenNotifier2D" to="StaticBody2D" method="_on_visible_on_screen_notifier_2d_screen_exited"]
