@@ -1,18 +1,54 @@
-[gd_scene load_steps=13 format=3 uid="uid://ovwbjy2ausdq"]
+[gd_scene load_steps=18 format=3 uid="uid://ovwbjy2ausdq"]
 
 [ext_resource type="Script" path="res://scripts/stair.gd" id="1_0lka4"]
-[ext_resource type="Texture2D" uid="uid://0nr3k6yblvnu" path="res://assets/Sprites/fame_icon.png" id="1_lsokl"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ofkw8"]
 [ext_resource type="PackedScene" uid="uid://brprhg7wewhag" path="res://scenes/sky_ball_enemy.tscn" id="2_ua1cw"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_88dx7"]
 [ext_resource type="PackedScene" uid="uid://dgai8ej7py65d" path="res://scenes/box_enemy.tscn" id="3_d542c"]
 [ext_resource type="Script" path="res://scripts/stairsGenerator.gd" id="4_p0rom"]
 [ext_resource type="PackedScene" uid="uid://ccpsc0lwq3nag" path="res://scenes/step.tscn" id="5_d4ioo"]
+[ext_resource type="Texture2D" uid="uid://co88lp2gmx5gx" path="res://assets/Sprites/Bonhomme.png" id="6_2o2vu"]
 [ext_resource type="Script" path="res://scripts/player_area_2d.gd" id="6_ypnay"]
 [ext_resource type="PackedScene" uid="uid://fvn4bpbrc88t" path="res://scenes/paradise.tscn" id="8_fay16"]
 [ext_resource type="PackedScene" uid="uid://bwjbqo8cayg6y" path="res://scenes/hud.tscn" id="10_5rw2g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb8i2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuyuc"]
+atlas = ExtResource("6_2o2vu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4q3k"]
+atlas = ExtResource("6_2o2vu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r16t"]
+atlas = ExtResource("6_2o2vu")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu6gl"]
+atlas = ExtResource("6_2o2vu")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_67vce"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuyuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4q3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7r16t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mu6gl")
+}],
+"loop": true,
+"name": &"bonhomme",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(348, 119)
@@ -28,15 +64,18 @@ script = ExtResource("1_ofkw8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_xb8i2")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("1_lsokl")
-
 [node name="PlayerArea2d" type="Area2D" parent="Player"]
 script = ExtResource("6_ypnay")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PlayerArea2d"]
 position = Vector2(0, 3.8147e-06)
 shape = SubResource("RectangleShape2D_xb8i2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_67vce")
+animation = &"bonhomme"
+frame_progress = 0.509505
+speed_scale = 0.8
 
 [node name="StairsGeneration" type="Node2D" parent="."]
 position = Vector2(-633.653, 553.755)

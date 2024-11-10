@@ -13,5 +13,6 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	hit.emit()
+	if body.name != "step":
+		hit.emit()
 	pass # Replace with function body.

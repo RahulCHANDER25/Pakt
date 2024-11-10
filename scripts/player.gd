@@ -11,6 +11,8 @@ func _ready() -> void:
 func _process(delta):
 	if (global_position.x < get_viewport().get_camera_2d().global_position.x - (get_window().size.x / 2)):
 		global_position.x = get_viewport().get_camera_2d().global_position.x - (get_window().size.x / 2)
+	if velocity.x != 0:
+		$AnimatedSprite2D.flip_h = velocity.x < 0
 
 func _physics_process(delta: float) -> void:
 	if global_position.y > 500:
@@ -19,14 +21,22 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		if not $AnimatedSprite2D.is_playing():
+			$AnimatedSprite2D.play("bonhomme")
+
+	if is_on_floor():
+		$AnimatedSprite2D.stop()
+	
 	# Handle jump.
 	if Input.is_action_just_pressed("go_up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+
 
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
 
 	move_and_slide()
