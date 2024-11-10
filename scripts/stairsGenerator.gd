@@ -19,7 +19,6 @@ func _process(delta):
 
 func add_stair():
 	stair_counter += 1
-	print(stair_counter)
 	if stair_counter == max_steps:
 		win = true
 		var paradise = paradise_scene.instantiate()
