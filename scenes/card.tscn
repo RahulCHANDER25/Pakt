@@ -21,9 +21,9 @@ color = Color(0.122252, 0.122252, 0.122252, 1)
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
 offset_left = -264.0
-offset_top = -288.0
+offset_top = -320.0
 offset_right = -164.0
-offset_bottom = -188.0
+offset_bottom = -220.0
 scale = Vector2(5.19, 5.19)
 size_flags_horizontal = 4
 texture = ExtResource("1_h6n2a")
@@ -34,23 +34,24 @@ shape = SubResource("RectangleShape2D_exyd1")
 
 [node name="Title" type="Label" parent="."]
 offset_left = -224.0
-offset_top = 88.0
+offset_top = 56.0
 offset_right = -184.0
-offset_bottom = 111.0
-text = "Title"
+offset_bottom = 79.0
+text = "Title
+"
 
 [node name="Description" type="Label" parent="."]
 offset_left = -224.0
-offset_top = 128.0
-offset_right = -184.0
-offset_bottom = 151.0
+offset_top = 96.0
+offset_right = -135.0
+offset_bottom = 119.0
 text = "Description"
 
 [node name="PassEffect" type="VBoxContainer" parent="."]
-offset_left = -250.0
-offset_top = 250.0
-offset_right = -159.0
-offset_bottom = 290.0
+offset_left = -224.0
+offset_top = 231.0
+offset_right = -128.0
+offset_bottom = 271.0
 script = ExtResource("3_mcqbq")
 
 [node name="Description" type="Label" parent="PassEffect"]
@@ -58,14 +59,22 @@ layout_mode = 2
 text = "Pass effects:"
 
 [node name="PaktEffect" type="VBoxContainer" parent="."]
-offset_left = 30.0
-offset_top = 250.0
-offset_right = 121.0
-offset_bottom = 290.0
+offset_left = 112.0
+offset_top = 231.0
+offset_right = 208.0
+offset_bottom = 271.0
 script = ExtResource("3_mcqbq")
 
 [node name="Description" type="Label" parent="PaktEffect"]
 layout_mode = 2
 text = "Pakt effects:"
+
+[node name="Help" type="Label" parent="."]
+offset_left = -224.0
+offset_top = 160.0
+offset_right = 219.0
+offset_bottom = 183.0
+theme_override_colors/font_color = Color(0.678944, 0.678944, 0.678944, 1)
+text = "REFUSE PAKT     <==          SWIPE          ==>      ACCEPT PAKT"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
