@@ -16,10 +16,13 @@ script = ExtResource("1_40a2x")
 position = Vector2(-1.24998, -0.500023)
 shape = SubResource("RectangleShape2D_6lrwc")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(1.87501, -1.75002)
-scale = Vector2(0.576172, 0.566406)
-texture = ExtResource("1_owxcf")
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_left = -38.0
+offset_top = -36.0
+offset_right = 599.0
+offset_bottom = 26.0
+scale = Vector2(1.77781, 1.13416)
+color = Color(0, 0, 0, 1)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="StaticBody2D"]
 
