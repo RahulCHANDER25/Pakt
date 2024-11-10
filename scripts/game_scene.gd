@@ -76,7 +76,6 @@ func _on_card_refuse():
 				break
 			
 		if card_to_remove_index != -1:
-			print("lol")
 			cards.pop_at(card_to_remove_index)
 			updateStats(active_card.pass_effects)
 	if cards.size() > 0:

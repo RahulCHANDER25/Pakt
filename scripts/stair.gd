@@ -52,7 +52,6 @@ func _on_box_timer_timeout() -> void:
 
 func _on_player_area_2d_hit() -> void:
 	PlayerStats.mapStats["health"] -= 1
-	print("HP: %d" % PlayerStats.mapStats["health"])
 	refresh($HUD/GUI/GameIcons/HeartCounter/Number, "health", PlayerStats.mapStats["health"])
 	if PlayerStats.mapStats["health"] <= 0:
 		print("DEAD")

@@ -9,8 +9,8 @@
 [ext_resource type="Script" path="res://scripts/stairsGenerator.gd" id="4_p0rom"]
 [ext_resource type="PackedScene" uid="uid://ccpsc0lwq3nag" path="res://scenes/step.tscn" id="5_d4ioo"]
 [ext_resource type="Script" path="res://scripts/player_area_2d.gd" id="6_ypnay"]
+[ext_resource type="PackedScene" path="res://scenes/paradise.tscn" id="8_fay16"]
 [ext_resource type="PackedScene" uid="uid://bwjbqo8cayg6y" path="res://scenes/hud.tscn" id="10_5rw2g"]
-[ext_resource type="PackedScene" uid="uid://fvn4bpbrc88t" path="res://scenes/paradise.tscn" id="8_fay16"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb8i2"]
 
