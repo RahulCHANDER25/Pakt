@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://ovwbjy2ausdq"]
+[gd_scene load_steps=11 format=3 uid="uid://ovwbjy2ausdq"]
 
 [ext_resource type="Script" path="res://scripts/stair.gd" id="1_0lka4"]
 [ext_resource type="Texture2D" uid="uid://0nr3k6yblvnu" path="res://assets/Sprites/fame_icon.png" id="1_lsokl"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ofkw8"]
-[ext_resource type="PackedScene" uid="uid://brprhg7wewhag" path="res://scenes/sky_ball_enemy.tscn" id="2_ua1cw"]
+[ext_resource type="PackedScene" path="res://scenes/sky_ball_enemy.tscn" id="2_ua1cw"]
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="3_88dx7"]
-[ext_resource type="PackedScene" uid="uid://dgai8ej7py65d" path="res://scenes/box_enemy.tscn" id="3_d542c"]
+[ext_resource type="PackedScene" path="res://scenes/box_enemy.tscn" id="3_d542c"]
 [ext_resource type="Script" path="res://scripts/stairsGenerator.gd" id="4_p0rom"]
 [ext_resource type="PackedScene" uid="uid://ccpsc0lwq3nag" path="res://scenes/step.tscn" id="5_d4ioo"]
+[ext_resource type="Script" path="res://scripts/player_area_2d.gd" id="6_ypnay"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb8i2"]
 
@@ -28,7 +29,14 @@ shape = SubResource("RectangleShape2D_xb8i2")
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 texture = ExtResource("1_lsokl")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="PlayerArea2d" type="Area2D" parent="Player"]
+script = ExtResource("6_ypnay")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PlayerArea2d"]
+position = Vector2(0, 3.8147e-06)
+shape = SubResource("RectangleShape2D_xb8i2")
+
+[node name="StairsGeneration" type="Node2D" parent="."]
 position = Vector2(-633.653, 553.755)
 script = ExtResource("4_p0rom")
 stair_scene = ExtResource("5_d4ioo")
@@ -42,5 +50,7 @@ target_path = NodePath("../Player")
 
 [node name="BoxTimer" type="Timer" parent="."]
 
+[connection signal="body_entered" from="Player/PlayerArea2d" to="Player/PlayerArea2d" method="_on_body_entered"]
+[connection signal="hit" from="Player/PlayerArea2d" to="Player" method="_on_player_area_2d_hit"]
 [connection signal="timeout" from="SkyBallTimer" to="." method="_on_sky_ball_timer_timeout"]
 [connection signal="timeout" from="BoxTimer" to="." method="_on_box_timer_timeout"]

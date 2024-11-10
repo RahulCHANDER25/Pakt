@@ -22,7 +22,7 @@ func _on_sky_ball_timer_timeout() -> void:
 
 	var view = get_viewport()
 	sky_ball.position = Vector2(
-		(view.get_camera_2d().global_position.x - get_window().size.x) + randf_range(view.size.x / 2, view.size.x),
+		(view.get_camera_2d().global_position.x - get_window().size.x) + randf_range(2 * view.size.x / 3, view.size.x),
 		view.get_camera_2d().global_position.y - (get_window().size.y)
 	)
 	add_child(sky_ball)
