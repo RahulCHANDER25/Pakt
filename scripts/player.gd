@@ -8,12 +8,8 @@ func _ready() -> void:
 
 func _process(delta):
 
-	print("X camera: ", get_viewport().get_camera_2d().global_position.x, " | player: ", global_position.x, " | window: ", get_window().size.x)
-	print("Y camera: ", get_viewport().get_camera_2d().global_position.y, " | player: ", global_position.y, " | window: ", get_window().size.y)
 	if (global_position.x < get_viewport().get_camera_2d().global_position.x - (get_window().size.x / 2)):
 		global_position.x = get_viewport().get_camera_2d().global_position.x - (get_window().size.x / 2)
-	#if (position.x > get_viewport().get_camera_2d().global_position.x + get_window().size.x / 2):
-		#position.x = get_viewport().get_camera_2d().global_position.x + get_window().size.x / 2
 	pass
 
 func _physics_process(delta: float) -> void:
