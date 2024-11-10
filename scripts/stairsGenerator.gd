@@ -10,7 +10,7 @@ func _ready():
 	add_stair()
 
 func _process(delta):
-	if get_viewport().get_camera_2d().global_position.x > last_stair_position.x - 900:
+	while get_viewport().get_camera_2d().global_position.x > last_stair_position.x - 900:
 		add_stair()
 
 func add_stair():

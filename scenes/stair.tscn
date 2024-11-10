@@ -13,6 +13,7 @@ position = Vector2(348, 119)
 rotation = -0.0243201
 
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(5.53083, -62.8841)
 script = ExtResource("1_ofkw8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -21,11 +22,11 @@ shape = SubResource("RectangleShape2D_xb8i2")
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 texture = ExtResource("1_lsokl")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-script = ExtResource("3_88dx7")
-target_path = NodePath("..")
-
 [node name="Node2D" type="Node2D" parent="."]
-rotation = -0.157541
 script = ExtResource("4_p0rom")
 stair_scene = ExtResource("5_d4ioo")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(5.53082, -62.8841)
+script = ExtResource("3_88dx7")
+target_path = NodePath("../Player")

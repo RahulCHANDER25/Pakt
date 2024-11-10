@@ -11,12 +11,10 @@ size = Vector2(72, 69)
 physics_interpolation_mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-61, 87.5)
-rotation = 0.261799
+position = Vector2(-1.24998, -0.500023)
 shape = SubResource("RectangleShape2D_6lrwc")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(-57.875, 86.25)
-rotation = 0.261799
+position = Vector2(1.87501, -1.75002)
 scale = Vector2(0.576172, 0.566406)
 texture = ExtResource("1_owxcf")
